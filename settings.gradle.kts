@@ -5,7 +5,7 @@ plugins {
 rootProject.name = "valhalla-models"
 
 gradle.beforeProject {
-    extensions.extraProperties["libraryVersion"] = "0.1.1-br-patch"
+    extensions.extraProperties["libraryVersion"] = "0.1.1-br-patch-2"
 }
 
 include("client")

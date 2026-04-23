@@ -1307,6 +1307,15 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/requestId'
+        directions_options:
+          properties:
+            format:
+              type: string
+              enum:
+                - json
+                - gpx
+                - osrm
+                - pbf
         locations:
           type: array
           items:
