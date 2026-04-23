@@ -73,7 +73,9 @@ val libraryVersion: String by extra
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-    signAllPublications()
+    if (project.findProperty("signPublications") != "false") {
+        signAllPublications()
+    }
 
     if (libraryVersion == "unspecified") {
         throw GradleException("libraryVersion must be specified in settings.gradle.kts")
@@ -107,6 +109,19 @@ mavenPublishing {
             connection.set(ProjectConfig.SCM_CONNECTION)
             developerConnection.set(ProjectConfig.SCM_DEV_CONNECTION)
             url.set(ProjectConfig.SCM_URL)
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/valhalla-openapi-models-kotlin")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
 }
