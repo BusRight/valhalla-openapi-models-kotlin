@@ -1334,8 +1334,41 @@ components:
             Roads intersecting these rings will be avoided during path finding. Open rings will be
             closed automatically.
           example: [[[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]]
-        directions_options:
-          $ref: '#/components/schemas/directionsOptions'
+        units:
+          $ref: '#/components/schemas/distanceUnit'
+        language:
+          $ref: '#/components/schemas/valhallaLanguages'
+        directions_type:
+          type: string
+          enum:
+            - none
+            - maneuvers
+            - instructions
+          default: instructions
+          description: >-
+            The level of directional narrative to include. Locations and times will always be returned,
+            but narrative generation verbosity can be controlled with this parameter.
+        format:
+          type: string
+          enum:
+            - json
+            - gpx
+            - osrm
+            - pbf
+        shape_format:
+          type: string
+          enum:
+            - polyline6
+            - polyline5
+            - geojson
+            - no_shape
+          default: polyline6
+        banner_instructions:
+          type: boolean
+        voice_instructions:
+          type: boolean
+        alternates:
+          type: integer
       required:
         - locations
         - costing
@@ -1360,9 +1393,7 @@ components:
               "use_highways": 0
             }
           },
-          "directions_options": {
-            "units": "miles"
-          }
+          "units": "miles"
         }
     optimizedRouteRequest:
       properties:
@@ -2050,8 +2081,8 @@ components:
                     "verbal_pre_transition_instruction": "Drive west on Alaska 1, Seward Highway. Then You will arrive at your destination.",
                     "verbal_post_transition_instruction": "Continue for 900 feet.",
                     "street_names": [
-                        "AK 1",
-                        "Seward Highway"
+                      "AK 1",
+                      "Seward Highway"
                     ],
                     "time": 11.487,
                     "length": 0.176,
@@ -2425,7 +2456,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn right onto Jefferson Street.",
                     "verbal_post_transition_instruction": "Continue for 80 feet.",
                     "street_names": [
-                        "Jefferson Street"
+                      "Jefferson Street"
                     ],
                     "time": 16.941,
                     "length": 0.014,
@@ -2472,7 +2503,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn left onto Hyde Street.",
                     "verbal_post_transition_instruction": "Continue for 300 feet.",
                     "street_names": [
-                        "Hyde Street"
+                      "Hyde Street"
                     ],
                     "time": 58.588,
                     "length": 0.051,
@@ -2536,7 +2567,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn right onto Beach Street.",
                     "verbal_post_transition_instruction": "Continue for 500 feet.",
                     "street_names": [
-                        "Beach Street"
+                      "Beach Street"
                     ],
                     "time": 110.705,
                     "length": 0.095,
@@ -2553,7 +2584,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn left onto Polk Street.",
                     "verbal_post_transition_instruction": "Continue for 300 feet.",
                     "street_names": [
-                        "Polk Street"
+                      "Polk Street"
                     ],
                     "time": 68.058,
                     "length": 0.059,
@@ -2585,7 +2616,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn left onto Van Ness Avenue.",
                     "verbal_post_transition_instruction": "Continue for 400 feet.",
                     "street_names": [
-                        "Van Ness Avenue"
+                      "Van Ness Avenue"
                     ],
                     "time": 83.294,
                     "length": 0.073,
@@ -2634,7 +2665,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn right onto Bay Street.",
                     "verbal_post_transition_instruction": "Continue for 900 feet.",
                     "street_names": [
-                        "Bay Street"
+                      "Bay Street"
                     ],
                     "time": 194.823,
                     "length": 0.171,
@@ -2651,7 +2682,7 @@ components:
                     "verbal_pre_transition_instruction": "Turn left onto Gough Street. Then You will arrive at your destination.",
                     "verbal_post_transition_instruction": "Continue for 20 feet.",
                     "street_names": [
-                        "Gough Street"
+                      "Gough Street"
                     ],
                     "time": 3.302,
                     "length": 0.002,
@@ -2690,42 +2721,42 @@ components:
               }
             ],
             "linear_references": [
-                "C6jyLBrisjr3Af+4//g6BA==",
-                "C6jyCxrirjr3AAAA//s6Bw==",
-                "C6jyDBriqyKUAP/j//0iAg==",
-                "C6jx/xriqTr3AAAA//w6Ag==",
-                "C6jx/xripjr0AP/2AAE6Hg==",
-                "C6jx+xripiKUAQAM/8kiHw==",
-                "C6jyARrijCKPAAAC/+8iBg==",
-                "C6jyAxrihDrvAP/0AAM6BQ==",
-                "C6jx/hrihTrzAP/5//o6Bw==",
-                "C6jx+xrigjr1AP/h//06Bw==",
-                "C6jx7RrigDr3Af++//k6Bw==",
-                "C6jxzxrifDr3AP/T//w6Ag==",
-                "C6jxuxrieTr3AAAA//g6Bw==",
-                "C6jxvBridTLSAP/1AAAyBw==",
-                "C6jxtxridDLSAP/2AAEyBg==",
-                "C6jxsxridDLWAf+d//MyBw==",
-                "C6jxhRribjLXAP/P//oyAg==",
-                "C6jxbxriazLXAP/1//8yHw==",
-                "C6jxaxriajLXAP////kyHw==",
-                "C6jxaxriZjLTAAAJ/9MyHw==",
-                "C6jxbxriUTLPAAAG/+IyBw==",
-                "C6jxcxriQzrvAP/z//86Bw==",
-                "C6jxbhriQjryAP/P//s6Bw==",
-                "C6jxVxriPzr3AP/b//w6Bw==",
-                "C6jxRhriPTr3AP/N//o6Aw==",
-                "C6jxLxriOjr3AP/4AAA6Aw==",
-                "C6jxLBriOTLXAP/9//kyBQ==",
-                "C6jxKxriNSKTAP/u//8iHw==",
-                "C6jxIxriNCKWAAAE/+siHw==",
-                "C6jxJRriKiKPAAAE/+0iHw==",
-                "C6jxJxriISKPAAAI/9kiAw==",
-                "C6jxKxriDjrvAP/0AAA6AQ==",
-                "C6jxJhriDjrzAAAB//Q6Bw==",
-                "C6jxJxriCBpxAv9s/+8aBw==",
-                "C6jw4xrh/xp3Av9a/+0aBQ==",
-                "C6jwlhrh9jLXAAAA//0yBQ=="
+              "C6jyLBrisjr3Af+4//g6BA==",
+              "C6jyCxrirjr3AAAA//s6Bw==",
+              "C6jyDBriqyKUAP/j//0iAg==",
+              "C6jx/xriqTr3AAAA//w6Ag==",
+              "C6jx/xripjr0AP/2AAE6Hg==",
+              "C6jx+xripiKUAQAM/8kiHw==",
+              "C6jyARrijCKPAAAC/+8iBg==",
+              "C6jyAxrihDrvAP/0AAM6BQ==",
+              "C6jx/hrihTrzAP/5//o6Bw==",
+              "C6jx+xrigjr1AP/h//06Bw==",
+              "C6jx7RrigDr3Af++//k6Bw==",
+              "C6jxzxrifDr3AP/T//w6Ag==",
+              "C6jxuxrieTr3AAAA//g6Bw==",
+              "C6jxvBridTLSAP/1AAAyBw==",
+              "C6jxtxridDLSAP/2AAEyBg==",
+              "C6jxsxridDLWAf+d//MyBw==",
+              "C6jxhRribjLXAP/P//oyAg==",
+              "C6jxbxriazLXAP/1//8yHw==",
+              "C6jxaxriajLXAP////kyHw==",
+              "C6jxaxriZjLTAAAJ/9MyHw==",
+              "C6jxbxriUTLPAAAG/+IyBw==",
+              "C6jxcxriQzrvAP/z//86Bw==",
+              "C6jxbhriQjryAP/P//s6Bw==",
+              "C6jxVxriPzr3AP/b//w6Bw==",
+              "C6jxRhriPTr3AP/N//o6Aw==",
+              "C6jxLxriOjr3AP/4AAA6Aw==",
+              "C6jxLBriOTLXAP/9//kyBQ==",
+              "C6jxKxriNSKTAP/u//8iHw==",
+              "C6jxIxriNCKWAAAE/+siHw==",
+              "C6jxJRriKiKPAAAE/+0iHw==",
+              "C6jxJxriISKPAAAI/9kiAw==",
+              "C6jxKxriDjrvAP/0AAA6AQ==",
+              "C6jxJhriDjrzAAAB//Q6Bw==",
+              "C6jxJxriCBpxAv9s/+8aBw==",
+              "C6jw4xrh/xp3Av9a/+0aBQ==",
+              "C6jwlhrh9jLXAAAA//0yBQ=="
             ],
             "summary": {
               "has_time_restrictions": false,
