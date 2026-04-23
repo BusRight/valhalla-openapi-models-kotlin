@@ -20,7 +20,6 @@ class RouteRequestTest {
         RoutingWaypoint(lat = 45.869701, lon = -123.766121)
       ),
       costing = CostingModel.auto,
-      directionsOptions = DirectionsOptions(format = DirectionsOptions.Format.json)
     )
 
     val actualJson = moshi.adapter(RouteRequest::class.java).toJson(request)
@@ -55,13 +54,10 @@ class RouteRequestTest {
           }
         ],
         "costing": "auto",
-        "directions_options": {
-          "units": "km",
-          "language": "en-US",
-          "directions_type": "instructions",
-          "format": "json",
-          "shape_format": "polyline6"
-        }
+        "units": "km",
+        "language": "en-US",
+        "directions_type": "instructions",
+        "shape_format": "polyline6"
       }
       """
     }
