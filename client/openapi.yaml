@@ -1307,15 +1307,6 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/requestId'
-        directions_options:
-          properties:
-            format:
-              type: string
-              enum:
-                - json
-                - gpx
-                - osrm
-                - pbf
         locations:
           type: array
           items:
@@ -1343,6 +1334,8 @@ components:
             Roads intersecting these rings will be avoided during path finding. Open rings will be
             closed automatically.
           example: [[[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]]
+        directions_options:
+          $ref: '#/components/schemas/directionsOptions'
         units:
           $ref: '#/components/schemas/distanceUnit'
         language:
