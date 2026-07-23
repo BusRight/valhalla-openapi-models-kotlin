@@ -189,6 +189,11 @@ components:
                   default: motorway
                   allOf:
                     - $ref: '#/components/schemas/roadClass'
+            name:
+              type: string
+              description: >-
+                Location or business name. May be used in the route narration directions,
+                such as "You have arrived at <business name>."
     routingResponseWaypoint:
       allOf:
         - $ref: '#/components/schemas/simpleRoutingWaypoint'
