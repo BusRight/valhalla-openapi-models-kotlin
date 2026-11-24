@@ -392,6 +392,18 @@ components:
               format: double
               description: The width of the automobile (in meters).
               default: 1.6
+            length:
+              type: number
+              format: double
+              description: The length of the automobile (in meters).
+              default: 2.7
+            weight:
+              type: number
+              format: double
+              description: >-
+                The weight of the automobile (in metric tons). Valhalla replaces a value outside 0–100 with the
+                default.
+              default: 0.8
             toll_booth_cost:
               type: integer
               description: The estimated cost (in seconds) when a toll booth is encountered.
@@ -416,6 +428,12 @@ components:
               default: 0.5
               minimum: 0
               maximum: 1
+            exclude_highways:
+              type: boolean
+              description: >-
+                If true, the route may start and end on highways but not include them in between. Unlike
+                `use_highways`, this is a hard exclusion, so no route may be found.
+              default: false
             use_tolls:
               type: number
               format: double
@@ -434,6 +452,11 @@ components:
               default: 140
               minimum: 10
               maximum: 252
+            speed_penalty_factor:
+              type: number
+              format: double
+              description: The penalty factor applied to edges whose speed is faster than `top_speed`.
+              default: 0.05
             shortest:
               type: boolean
               description: >-
